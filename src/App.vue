@@ -27,6 +27,10 @@ import DriveVue from "./components/drive-vue/index.vue";
   position: absolute;
   left: 500px;
   top: 80px;
+  z-index: 999;
+  &:hover {
+    cursor: pointer;
+  }
 }
 #img3 {
   position: absolute;
