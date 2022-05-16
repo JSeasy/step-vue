@@ -1,5 +1,6 @@
 <template>
   <slot></slot>
+  <StepVue />
 </template>
 
 <script lang="ts" setup>
@@ -8,7 +9,6 @@ import StepVue from "./components/index.vue";
 const slots = useSlots();
 const vmSlots = slots.default?.();
 onMounted(() => {
-  console.log(createApp(StepVue).mount(document.body));
   if (vmSlots) {
     const getTarget = (vmSlots: VNode[]) => {
       const target = vmSlots[0];
