@@ -5,6 +5,7 @@ import DriveVue from "./components/drive-vue/index.vue";
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" id="img1" ref="target1" />
+
   <img alt="Vue logo" src="./assets/logo.png" id="img2" ref="target2" />
   <DriveVue>
     <img src="./assets/logo.png" height="150" width="150" />

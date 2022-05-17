@@ -15,7 +15,6 @@ const positionInfo = reactive({
   width: 0,
 });
 onMounted(() => {
-  console.log(vmSlots);
   if (vmSlots) {
     const getTarget = (vmSlots: VNode[]) => {
       const target = vmSlots[0];
@@ -23,7 +22,6 @@ onMounted(() => {
     };
     const targetInfo = getTarget(vmSlots) as HTMLElement;
     const { x, y, height, width } = targetInfo.getBoundingClientRect();
-
     positionInfo.x = x;
     positionInfo.y = y;
     positionInfo.height = height;
