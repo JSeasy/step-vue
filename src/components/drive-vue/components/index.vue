@@ -1,19 +1,26 @@
 <template>
   <Teleport to="body">
     <div class="step-vue">
-      <canvas ref="canvas" height="100%" width="100%"></canvas>
+      <div
+        class="high-light"
+        :style="{
+          left: positionInfo.x + 'px',
+          top: positionInfo.y + 'px',
+          height: positionInfo.height + 'px',
+          width: positionInfo.width + 'px',
+        }"
+      ></div>
     </div>
   </Teleport>
 </template>
 
 <script setup lang="ts">
-import { onMounted, useSlots, VNode, ref } from "vue";
+import { onMounted, useSlots, VNode, ref, watch } from "vue";
 import { fabric } from "fabric";
 const canvas = ref(null);
-onMounted(() => {
-  //   const canvasInstance = new fabric.StaticCanvas(canvas);
-  //   console.log(canvasInstance);
-});
+const { positionInfo } = defineProps<{
+  positionInfo: { x: number; y: number; height: number; width: number };
+}>();
 </script>
 
 <style scoped lang="less">
@@ -24,5 +31,10 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  .high-light {
+    background: white;
+    position: absolute;
+    border-radius: 5px;
+  }
 }
 </style>

@@ -6,15 +6,8 @@ import DriveVue from "./components/drive-vue/index.vue";
 <template>
   <img alt="Vue logo" src="./assets/logo.png" id="img1" ref="target1" />
   <img alt="Vue logo" src="./assets/logo.png" id="img2" ref="target2" />
-  <img alt="Vue logo" src="./assets/logo.png" id="img3" ref="target3" />
-  <DriveVue
-    :driveList="[
-      { targetId: '#img1' },
-      { targetId: '#img2' },
-      { target3: '#img3' },
-    ]"
-  >
-    <div style="margin-top: 123px">123123123123123</div>
+  <DriveVue>
+    <img src="./assets/logo.png" height="150" width="150" />
   </DriveVue>
 </template>
 
@@ -27,7 +20,6 @@ import DriveVue from "./components/drive-vue/index.vue";
   position: absolute;
   left: 500px;
   top: 80px;
-  z-index: 999;
   &:hover {
     cursor: pointer;
   }
