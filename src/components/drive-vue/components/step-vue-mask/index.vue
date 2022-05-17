@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div class="step-vue">
+    <div class="step-vue-mask">
       <div
         class="high-light"
         :style="{
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, useSlots, VNode, ref, watch } from "vue";
+import { ref } from "vue";
 import { fabric } from "fabric";
 const canvas = ref(null);
 const { positionInfo } = defineProps<{
@@ -24,7 +24,7 @@ const { positionInfo } = defineProps<{
 </script>
 
 <style scoped lang="less">
-.step-vue {
+.step-vue-mask {
   position: fixed;
   left: 0;
   top: 0;
