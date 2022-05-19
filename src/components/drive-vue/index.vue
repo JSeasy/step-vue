@@ -17,9 +17,10 @@ import { onMounted, reactive, useSlots, VNode } from "vue";
 
 import StepVueMask from "./components/step-vue-mask/index.vue";
 import StepVuePopover from "./components/step-vue-popover/index.vue";
+import { TArrow } from "@/types";
 const props = defineProps<{
   visible: boolean;
-  arrow: string;
+  arrow: TArrow;
 }>();
 
 const slots = useSlots();

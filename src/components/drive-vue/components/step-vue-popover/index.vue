@@ -8,20 +8,28 @@
         width: computedPositionInfo.width + 'px',
       }"
     >
-      <slot name="ctx"></slot>
+      <div class="step-vue-ctx-wrap">
+        <slot name="ctx"></slot>
+      </div>
       <div :class="['step-vue-arrow', `step-vue-arrow-${arrow}`]"></div>
-      <button @click="emit('pre')">上一步</button>
-      <button @click="emit('next')">下一步</button>
+      <div class="step-vue-btns-wrap">
+        <div class="step-vue-pre-btn-wrap">
+          <button @click="emit('pre')">pre</button>
+        </div>
+        <div class="step-vue-next-btn-wrap">
+          <button @click="emit('next')">next</button>
+        </div>
+      </div>
     </div>
   </Teleport>
 </template>
 
 <script setup lang="ts">
 import { computed } from "@vue/reactivity";
-import { useSlots, withDefaults } from "vue";
+import { useSlots, withDefaults, ref, onMounted } from "vue";
 
-import { TArrow, IPositionInfo } from "../../../../types";
-
+import { TArrow, IPositionInfo } from "@/types";
+const popover = ref(null);
 const computedPositionInfo = computed(() =>
   computedPositionWidthArrow(positionInfo, arrow)
 );
@@ -32,7 +40,7 @@ const computedPositionWidthArrow = (position: IPositionInfo, arrow: TArrow) => {
     case "top":
       return {
         ...position,
-        y: position.y - position.height - 150,
+        y: position.y - position.height - 200,
       };
     case "bottom":
       return {
@@ -62,13 +70,15 @@ const { positionInfo, arrow } = withDefaults(
     arrow: "top",
   }
 );
-
 useSlots();
+
+onMounted(() => {
+  console.log(popover);
+});
 </script>
 
 <style scoped lang="less">
 .step-vue-popover {
-  min-height: 120px;
   background: white;
   position: absolute;
   border-radius: 5px;
@@ -76,7 +86,13 @@ useSlots();
   box-sizing: border-box;
   box-shadow: 3px 3px 20px rgb(0 0 0);
   transition: all 0.3s;
-
+  .step-vue-ctx-wrap {
+    min-height: 120px;
+  }
+  .step-vue-btns-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
   .step-vue-arrow {
     width: 8.48528137px;
     height: 8.48528137px;
