@@ -1,9 +1,13 @@
 <template>
   <slot></slot>
   <StepVueMask :positionInfo="positionInfo" v-if="props.visible" />
-  <StepVuePopover :positionInfo="positionInfo" v-if="props.visible">
-    <template #top>
-      <slot name="top"></slot>
+  <StepVuePopover
+    :positionInfo="positionInfo"
+    v-if="props.visible"
+    :arrow="props.arrow"
+  >
+    <template #ctx>
+      <slot name="ctx"></slot>
     </template>
   </StepVuePopover>
 </template>
@@ -15,6 +19,7 @@ import StepVueMask from "./components/step-vue-mask/index.vue";
 import StepVuePopover from "./components/step-vue-popover/index.vue";
 const props = defineProps<{
   visible: boolean;
+  arrow: string;
 }>();
 
 const slots = useSlots();
@@ -30,7 +35,7 @@ const getTarget = (vmSlots: VNode[]) => {
   const target = vmSlots[0];
   return target.el;
 };
-onMounted(() => {
+const init = () => {
   if (vmSlots) {
     const targetInfo = getTarget(vmSlots);
     if (targetInfo) {
@@ -41,18 +46,10 @@ onMounted(() => {
       positionInfo.width = width;
     }
   }
-  window.addEventListener("resize", () => {
-    if (vmSlots) {
-      const targetInfo = getTarget(vmSlots);
-      if (targetInfo) {
-        const { x, y, height, width } = targetInfo.getBoundingClientRect();
-        positionInfo.x = x;
-        positionInfo.y = y;
-        positionInfo.height = height;
-        positionInfo.width = width;
-      }
-    }
-  });
+};
+onMounted(() => {
+  init();
+  window.addEventListener("resize", init);
 });
 </script>
 

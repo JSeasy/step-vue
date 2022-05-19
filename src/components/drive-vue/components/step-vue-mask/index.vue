@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { fabric } from "fabric";
 const canvas = ref(null);
 const { positionInfo } = defineProps<{
   positionInfo: { x: number; y: number; height: number; width: number };
@@ -35,6 +34,7 @@ const { positionInfo } = defineProps<{
     background: white;
     position: absolute;
     border-radius: 5px;
+    transition: all 0.3s;
   }
 }
 </style>

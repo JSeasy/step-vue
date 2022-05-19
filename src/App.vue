@@ -9,10 +9,15 @@ const setVisible = (value: boolean) => {
 </script>
 
 <template>
-  <DriveVue :visible="visible">
-    <img src="./assets/logo.png" height="150" width="150" />
-    <template #top> 123123123 </template>
-  </DriveVue>
+  <div style="text-align: center">
+    <DriveVue :visible="visible" arrow="top">
+      <img src="./assets/logo.png" height="150" width="150" />
+      <template #ctx>
+        <div>123123</div>
+      </template>
+    </DriveVue>
+  </div>
+
   <button @click="setVisible(true)">show mask</button>
 </template>
 
