@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 import DriveVue from "./components/drive-vue/index.vue";
-const visible = ref(true);
+const visible = ref(false);
 const setVisible = (value: boolean) => {
   visible.value = value;
 };
@@ -10,8 +10,13 @@ const setVisible = (value: boolean) => {
 
 <template>
   <div style="text-align: center">
-    <DriveVue :visible="visible" arrow="bottom">
-      <img src="./assets/logo.png" height="150" width="150" />
+    <DriveVue :visible="visible" arrow="top">
+      <img
+        src="./assets/logo.png"
+        height="150"
+        width="150"
+        style="margin-top: 180px"
+      />
       <template #ctx>
         <div>123123</div>
       </template>

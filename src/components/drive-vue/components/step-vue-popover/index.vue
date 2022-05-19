@@ -20,14 +20,7 @@
 import { computed } from "@vue/reactivity";
 import { useSlots, withDefaults } from "vue";
 
-interface IPositionInfo {
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-}
-
-type TArrow = "top" | "bottom" | "left" | "right";
+import { TArrow, IPositionInfo } from "../../../../types";
 
 const computedPositionInfo = computed(() =>
   computedPositionWidthArrow(positionInfo, arrow)
@@ -39,7 +32,7 @@ const computedPositionWidthArrow = (position: IPositionInfo, arrow: TArrow) => {
     case "top":
       return {
         ...position,
-        y: position.y - position.height - 12,
+        y: position.y - position.height - 150,
       };
     case "bottom":
       return {
