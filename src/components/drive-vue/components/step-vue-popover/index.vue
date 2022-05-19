@@ -45,13 +45,13 @@ const computedPositionWidthArrow = (position: IPositionInfo, arrow: TArrow) => {
       return {
         ...position,
       };
-    case "left":
+    case "right":
       return {
         ...position,
         x: position.x + position.width + 12,
         y: position.y - position.height,
       };
-    case "right":
+    case "left":
       return {
         ...position,
         x: position.x - position.width - 12,
@@ -98,11 +98,11 @@ useSlots();
     transform: rotate(45deg);
     left: 20px;
   }
-  .step-vue-arrow-right {
+  .step-vue-arrow-left {
     right: -4.5px;
     transform: rotate(-45deg);
   }
-  .step-vue-arrow-left {
+  .step-vue-arrow-right {
     left: -4.5px;
     transform: rotate(135deg);
   }
