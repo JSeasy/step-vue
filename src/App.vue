@@ -10,7 +10,7 @@ const setVisible = (value: boolean) => {
 
 <template>
   <div style="text-align: center">
-    <DriveVue :visible="visible" arrow="right">
+    <DriveVue :visible="visible" arrow="top">
       <img
         src="./assets/logo.png"
         height="150"

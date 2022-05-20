@@ -1,3 +1,5 @@
+import { Ref } from "vue";
+
 export interface IPositionInfo {
   x: number;
   y: number;
@@ -6,3 +8,5 @@ export interface IPositionInfo {
 }
 
 export type TArrow = "top" | "bottom" | "left" | "right";
+
+export type TPopover = Ref<null | HTMLElement>;

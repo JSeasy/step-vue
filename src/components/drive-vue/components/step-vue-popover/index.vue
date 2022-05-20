@@ -2,11 +2,8 @@
   <Teleport to="body">
     <div
       class="step-vue-popover"
-      :style="{
-        left: computedPositionInfo.x + 'px',
-        top: computedPositionInfo.y + computedPositionInfo.height + 12 + 'px',
-        minWidth: computedPositionInfo.width + 'px',
-      }"
+      ref="popover"
+      :style="{ left: positionInfo.x + 'px', top: positionInfo.y + 'px' }"
     >
       <div class="step-vue-ctx-wrap">
         <slot name="ctx"></slot>
@@ -25,41 +22,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "@vue/reactivity";
 import { useSlots, withDefaults, ref, onMounted } from "vue";
 
-import { TArrow, IPositionInfo } from "@/types";
+import { TArrow, IPositionInfo, TPopover } from "@/types";
 const popover = ref(null);
-const computedPositionInfo = computed(() =>
-  computedPositionWidthArrow(positionInfo, arrow)
-);
 
-const emit = defineEmits<{ (event: "pre"): void; (event: "next"): void }>();
-const computedPositionWidthArrow = (position: IPositionInfo, arrow: TArrow) => {
-  switch (arrow) {
-    case "top":
-      return {
-        ...position,
-        y: position.y - position.height - 200,
-      };
-    case "bottom":
-      return {
-        ...position,
-      };
-    case "right":
-      return {
-        ...position,
-        x: position.x + position.width + 12,
-        y: position.y - position.height,
-      };
-    case "left":
-      return {
-        ...position,
-        x: position.x - position.width - 12,
-        y: position.y - position.height,
-      };
-  }
-};
+const emit = defineEmits<{
+  (event: "pre"): void;
+  (event: "next"): void;
+  (event: "popoverMounted", popover: TPopover): void;
+}>();
 
 const { positionInfo, arrow } = withDefaults(
   defineProps<{
@@ -70,10 +42,11 @@ const { positionInfo, arrow } = withDefaults(
     arrow: "top",
   }
 );
+
 useSlots();
 
 onMounted(() => {
-  console.log(popover);
+  emit("popoverMounted", popover);
 });
 </script>
 

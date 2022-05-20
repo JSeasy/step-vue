@@ -15,8 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-const canvas = ref(null);
+// 插槽位置信息
 const { positionInfo } = defineProps<{
   positionInfo: { x: number; y: number; height: number; width: number };
 }>();
