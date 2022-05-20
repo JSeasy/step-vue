@@ -18,7 +18,7 @@ const setVisible = (value: boolean) => {
         style="margin-top: 180px"
       />
       <template #ctx>
-        <div>123123</div>
+        <div style="width: 500px">123123</div>
       </template>
     </DriveVue>
   </div>

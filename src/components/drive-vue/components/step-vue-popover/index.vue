@@ -5,7 +5,7 @@
       :style="{
         left: computedPositionInfo.x + 'px',
         top: computedPositionInfo.y + computedPositionInfo.height + 12 + 'px',
-        width: computedPositionInfo.width + 'px',
+        minWidth: computedPositionInfo.width + 'px',
       }"
     >
       <div class="step-vue-ctx-wrap">
@@ -88,10 +88,14 @@ onMounted(() => {
   transition: all 0.3s;
   .step-vue-ctx-wrap {
     min-height: 120px;
+    margin-bottom: 5px;
   }
   .step-vue-btns-wrap {
     display: flex;
     justify-content: space-between;
+    button {
+      cursor: pointer;
+    }
   }
   .step-vue-arrow {
     width: 8.48528137px;
