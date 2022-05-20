@@ -6,11 +6,17 @@ const visible = ref(false);
 const setVisible = (value: boolean) => {
   visible.value = value;
 };
+const pre = () => {
+  console.log("pre");
+};
+const next = () => {
+  console.log("next");
+};
 </script>
 
 <template>
   <div style="text-align: center">
-    <DriveVue :visible="visible" arrow="top">
+    <DriveVue :visible="visible" arrow="right" @pre="pre" @next="next">
       <img
         src="./assets/logo.png"
         height="150"
@@ -18,12 +24,12 @@ const setVisible = (value: boolean) => {
         style="margin-top: 180px"
       />
       <template #ctx>
-        <div style="width: 500px">123123</div>
+        <div style="width: 500px; height: 300px">123123</div>
       </template>
     </DriveVue>
   </div>
 
-  <button @click="setVisible(true)">show mask</button>
+  <button @click="visible = true">show mask</button>
 </template>
 
 <style lang="less" scoped>

@@ -47,6 +47,7 @@ useSlots();
 
 onMounted(() => {
   emit("popoverMounted", popover);
+  window.addEventListener("resize", () => emit("popoverMounted", popover));
 });
 </script>
 
@@ -82,19 +83,21 @@ onMounted(() => {
   .step-vue-arrow-top {
     bottom: -4.5px;
     transform: rotate(45deg);
-    left: 20px;
+    left: 50%;
   }
   .step-vue-arrow-left {
-    right: -4.5px;
     transform: rotate(-45deg);
+    top: 50%;
+    right: -4.5px;
   }
   .step-vue-arrow-right {
     left: -4.5px;
+    top: 50%;
     transform: rotate(135deg);
   }
   .step-vue-arrow-bottom {
     top: -4.5px;
-    left: 20px;
+    left: 50%;
     transform: rotate(225deg);
   }
 }

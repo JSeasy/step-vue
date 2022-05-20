@@ -6,6 +6,8 @@
     v-if="props.visible"
     :arrow="props.arrow"
     @popoverMounted="popoverMounted"
+    @pre="emit('pre')"
+    @next="emit('next')"
   >
     <template #ctx>
       <slot name="ctx"></slot>
@@ -24,6 +26,7 @@ const props = defineProps<{
   arrow: TArrow;
 }>();
 
+const emit = defineEmits<{ (event: "pre"): void; (event: "next"): void }>();
 const slots = useSlots();
 
 const vmSlots = slots.default?.();
@@ -42,9 +45,9 @@ const popoverInfo = reactive({
 });
 
 const popoverMounted = (popover: TPopover) => {
-  const popoverInfo = getPositionInfo(popover.value);
+  const popoverElementInfo = getPositionInfo(popover.value);
   const { x, y, height, width } = computedPositionWidthArrow(
-    popoverInfo,
+    popoverElementInfo,
     hightLightInfo,
     props.arrow
   );
@@ -63,23 +66,26 @@ const computedPositionWidthArrow = (
     case "top":
       return {
         ...hightLightInfo,
-        y: hightLightInfo.y - hightLightInfo.height - 200,
+        y: hightLightInfo.y - popoverInfo.height - 12,
+        x: hightLightInfo.x - (popoverInfo.width - hightLightInfo.width) / 2,
       };
     case "bottom":
       return {
         ...hightLightInfo,
+        y: hightLightInfo.y + hightLightInfo.height + 12,
+        x: hightLightInfo.x - (popoverInfo.width - hightLightInfo.width) / 2,
       };
     case "right":
       return {
         ...hightLightInfo,
         x: hightLightInfo.x + hightLightInfo.width + 12,
-        y: hightLightInfo.y - hightLightInfo.height,
+        y: hightLightInfo.y - (popoverInfo.height - hightLightInfo.height) / 2,
       };
     case "left":
       return {
         ...hightLightInfo,
-        x: hightLightInfo.x - hightLightInfo.width - 12,
-        y: hightLightInfo.y - hightLightInfo.height,
+        x: hightLightInfo.x - popoverInfo.width - 12,
+        y: hightLightInfo.y - (popoverInfo.height - hightLightInfo.height) / 2,
       };
   }
 };
