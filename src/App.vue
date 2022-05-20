@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 import DriveVue from "./components/drive-vue/index.vue";
 const visible = ref(false);
+const visible2 = ref(false);
 const setVisible = (value: boolean) => {
   visible.value = value;
 };
@@ -16,13 +17,27 @@ const next = () => {
 
 <template>
   <div style="text-align: center">
-    <DriveVue :visible="visible" arrow="right" @pre="pre" @next="next">
-      <img
-        src="./assets/logo.png"
-        height="150"
-        width="150"
-        style="margin-top: 180px"
-      />
+    <DriveVue
+      :visible="visible"
+      arrow="bottom"
+      @pre="visible = false"
+      @next="
+        visible2 = true;
+        visible = false;
+      "
+    >
+      <div style="width: 300px">123123</div>
+      <template #ctx>
+        <div style="width: 500px; height: 300px">123123</div>
+      </template>
+    </DriveVue>
+    <DriveVue
+      :visible="visible2"
+      arrow="bottom"
+      @pre="(visible2 = false), (visible = true)"
+      @next="visible2 = false"
+    >
+      <div style="width: 500px">1asdasdasd</div>
       <template #ctx>
         <div style="width: 500px; height: 300px">123123</div>
       </template>
@@ -30,10 +45,7 @@ const next = () => {
   </div>
 
   <button @click="visible = true">show mask</button>
+  <button @click="visible2 = true">show mask</button>
 </template>
 
-<style lang="less" scoped>
-.high-light {
-  z-index: 999;
-}
-</style>
+<style lang="less" scoped></style>
