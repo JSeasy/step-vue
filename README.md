@@ -4,11 +4,10 @@
 
 # 使用方式
 
-
+``` JavaScript
 
 <script setup lang="ts">
 import { ref } from "vue";
-
 import DriveVue from "./components/drive-vue/index.vue";
 const visible = ref(false);
 const visible2 = ref(false);
@@ -17,7 +16,6 @@ const setVisible = (value: boolean) => {
 };
 
 </script>
-
 <template>
   <div style="text-align: center">
     <DriveVue
@@ -34,12 +32,8 @@ const setVisible = (value: boolean) => {
         <div style="width: 200px; height: 300px">123123</div>
       </template>
     </DriveVue>
-
-  
-
   <button @click="visible = true">show mask</button>
   <button @click="visible2 = true">show mask</button>
-
 
   <div style="display: flex; justify-content: space-around">
     <DriveVue
@@ -57,4 +51,4 @@ const setVisible = (value: boolean) => {
   </div>
 </template>
 
-<style lang="less" scoped></style>
+```
