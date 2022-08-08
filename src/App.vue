@@ -59,7 +59,7 @@ const next = () => {
   <div style="display: flex; justify-content: space-around">
     <DriveVue
       :visible="visible2"
-      arrow="bottom"
+      arrow="top"
       @pre="(visible2 = false), (visible = true)"
       @next="visible2 = false"
     >

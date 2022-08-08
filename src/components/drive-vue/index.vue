@@ -34,27 +34,13 @@ const props = defineProps<{
   arrow: TArrow;
 }>();
 
-const getDefaultSlotDOM = (
-  vmSlots: VNode<
-    RendererNode,
-    RendererElement,
-    {
-      [key: string]: any;
-    }
-  >[]
-) => {
-  const defaultSlot = vmSlots[0];
-  const slotDOM = defaultSlot.el as RendererNode;
-  return slotDOM;
-};
-
 watch([() => props.visible], () => {
   if (props.visible && vmSlots) {
-    const slotDOM = getDefaultSlotDOM(vmSlots);
-    slotDOM.classList.add("vue-step-hight-light");
+    const slotDOM = getTarget(vmSlots);
+    slotDOM?.classList.add("vue-step-hight-light");
   } else if (!props.visible && vmSlots) {
-    const slotDOM = getDefaultSlotDOM(vmSlots);
-    slotDOM.classList.remove("vue-step-hight-light");
+    const slotDOM = getTarget(vmSlots);
+    slotDOM?.classList.remove("vue-step-hight-light");
   }
 });
 
@@ -83,6 +69,7 @@ const popoverMounted = (popover: TPopover) => {
     hightLightInfo,
     props.arrow
   );
+  console.log(x, y, height, width, "xxx");
   popoverInfo.x = x;
   popoverInfo.y = y;
   popoverInfo.height = height;
