@@ -16,15 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  onMounted,
-  reactive,
-  RendererElement,
-  RendererNode,
-  useSlots,
-  VNode,
-  watch,
-} from "vue";
+import { onMounted, reactive, RendererNode, useSlots, VNode, watch } from "vue";
 
 import StepVueMask from "./components/step-vue-mask/index.vue";
 import StepVuePopover from "./components/step-vue-popover/index.vue";
@@ -69,7 +61,6 @@ const popoverMounted = (popover: TPopover) => {
     hightLightInfo,
     props.arrow
   );
-  console.log(x, y, height, width, "xxx");
   popoverInfo.x = x;
   popoverInfo.y = y;
   popoverInfo.height = height;
