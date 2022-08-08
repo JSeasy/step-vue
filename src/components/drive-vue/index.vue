@@ -133,4 +133,20 @@ onMounted(() => {
   position: relative;
   z-index: 999999;
 }
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes scale {
+  from {
+    transform: scale(2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 </style>

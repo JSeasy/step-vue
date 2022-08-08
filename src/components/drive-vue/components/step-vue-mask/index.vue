@@ -29,12 +29,13 @@ const { positionInfo } = defineProps<{
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-
+  animation: show 0.3s ease-in-out;
   .high-light {
     background: white;
     position: absolute;
     border-radius: 5px;
     transition: all 0.3s;
+    animation: scale 0.3s ease-in-out;
   }
 }
 </style>

@@ -59,7 +59,8 @@ onMounted(() => {
   padding: 5px;
   box-sizing: border-box;
   box-shadow: 3px 3px 20px rgb(0 0 0);
-  transition: all 0.3s;
+
+  animation: show 0.3s ease-in-out;
   .step-vue-ctx-wrap {
     min-height: 120px;
     margin-bottom: 5px;
