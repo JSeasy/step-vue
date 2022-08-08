@@ -26,12 +26,12 @@ const next = () => {
         visible = false;
       "
     >
-      <div style="width: 300px">123123</div>
+      <div>555555555555555555555555555555555555555555555555555555</div>
       <template #ctx>
-        <div style="width: 500px; height: 300px">123123</div>
+        <div style="width: 200px; height: 300px">123123</div>
       </template>
     </DriveVue>
-    <DriveVue
+    <!-- <DriveVue
       :visible="visible2"
       arrow="bottom"
       @pre="(visible2 = false), (visible = true)"
@@ -39,13 +39,37 @@ const next = () => {
     >
       <div style="width: 500px">1asdasdasd</div>
       <template #ctx>
-        <div style="width: 500px; height: 300px">123123</div>
+        <div style="width: 200px; height: 300px">123123</div>
       </template>
-    </DriveVue>
+    </DriveVue> -->
+    <div>123123123</div>
+    <div>123123123</div>
+    <div>123123123</div>
+    <div>123123123</div>
+    <div>123123123</div>
+    <div>123123123</div>
+    <div>123123123</div>
+    <div>123123123</div>
   </div>
 
   <button @click="visible = true">show mask</button>
   <button @click="visible2 = true">show mask</button>
+  <div>123123123</div>
+
+  <div style="display: flex; justify-content: space-around">
+    <DriveVue
+      :visible="visible2"
+      arrow="bottom"
+      @pre="(visible2 = false), (visible = true)"
+      @next="visible2 = false"
+    >
+      <div>1asdasdasd</div>
+      <template #ctx>
+        <div style="width: 200px; height: 300px">123123</div>
+      </template>
+    </DriveVue>
+    <div>123123123</div>
+  </div>
 </template>
 
 <style lang="less" scoped></style>

@@ -16,7 +16,15 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, RendererNode, useSlots, VNode } from "vue";
+import {
+  onMounted,
+  reactive,
+  RendererElement,
+  RendererNode,
+  useSlots,
+  VNode,
+  watch,
+} from "vue";
 
 import StepVueMask from "./components/step-vue-mask/index.vue";
 import StepVuePopover from "./components/step-vue-popover/index.vue";
@@ -25,6 +33,30 @@ const props = defineProps<{
   visible: boolean;
   arrow: TArrow;
 }>();
+
+const getDefaultSlotDOM = (
+  vmSlots: VNode<
+    RendererNode,
+    RendererElement,
+    {
+      [key: string]: any;
+    }
+  >[]
+) => {
+  const defaultSlot = vmSlots[0];
+  const slotDOM = defaultSlot.el as RendererNode;
+  return slotDOM;
+};
+
+watch([() => props.visible], () => {
+  if (props.visible && vmSlots) {
+    const slotDOM = getDefaultSlotDOM(vmSlots);
+    slotDOM.classList.add("vue-step-hight-light");
+  } else if (!props.visible && vmSlots) {
+    const slotDOM = getDefaultSlotDOM(vmSlots);
+    slotDOM.classList.remove("vue-step-hight-light");
+  }
+});
 
 const emit = defineEmits<{ (event: "pre"): void; (event: "next"): void }>();
 const slots = useSlots();
@@ -118,4 +150,9 @@ onMounted(() => {
 });
 </script>
 
-<style scoped lang="less"></style>
+<style lang="less">
+.vue-step-hight-light {
+  position: relative;
+  z-index: 999999;
+}
+</style>
