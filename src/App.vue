@@ -4,19 +4,12 @@ import { ref } from "vue";
 import DriveVue from "./components/drive-vue/index.vue";
 const visible = ref(false);
 const visible2 = ref(false);
-const setVisible = (value: boolean) => {
-  visible.value = value;
-};
-const pre = () => {
-  console.log("pre");
-};
-const next = () => {
-  console.log("next");
-};
 </script>
 
 <template>
   <div style="text-align: center">
+    <button @click="visible = true">show mask</button>
+
     <DriveVue
       :visible="visible"
       arrow="bottom"
@@ -26,46 +19,27 @@ const next = () => {
         visible = false;
       "
     >
-      <div>555555555555555555555555555555555555555555555555555555</div>
+      <div style="width: 300px">flag1</div>
       <template #ctx>
-        <div style="width: 200px; height: 300px">123123</div>
+        <div style="width: 200px; height: 300px">do something</div>
       </template>
     </DriveVue>
-    <!-- <DriveVue
+
+    <div>flag2</div>
+    <div>flag3</div>
+    <div>flag4</div>
+  </div>
+
+  <div style="display: flex; justify-content: space-around">
+    <DriveVue
       :visible="visible2"
       arrow="bottom"
       @pre="(visible2 = false), (visible = true)"
       @next="visible2 = false"
     >
-      <div style="width: 500px">1asdasdasd</div>
+      <div>flag4</div>
       <template #ctx>
-        <div style="width: 200px; height: 300px">123123</div>
-      </template>
-    </DriveVue> -->
-    <div>123123123</div>
-    <div>123123123</div>
-    <div>123123123</div>
-    <div>123123123</div>
-    <div>123123123</div>
-    <div>123123123</div>
-    <div>123123123</div>
-    <div>123123123</div>
-  </div>
-
-  <button @click="visible = true">show mask</button>
-  <button @click="visible2 = true">show mask</button>
-  <div>123123123</div>
-
-  <div style="display: flex; justify-content: space-around">
-    <DriveVue
-      :visible="visible2"
-      arrow="top"
-      @pre="(visible2 = false), (visible = true)"
-      @next="visible2 = false"
-    >
-      <div>1asdasdasd</div>
-      <template #ctx>
-        <div style="width: 200px; height: 300px">123123</div>
+        <div style="width: 200px; height: 300px">do something</div>
       </template>
     </DriveVue>
     <div>123123123</div>

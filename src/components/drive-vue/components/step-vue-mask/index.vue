@@ -34,7 +34,6 @@ const { positionInfo } = defineProps<{
     background: white;
     position: absolute;
     border-radius: 5px;
-    transition: all 0.3s;
     animation: scale 0.3s ease-in-out;
   }
 }
