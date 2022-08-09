@@ -1,6 +1,6 @@
 {
   "name": "step-vue",
-  "private": true,
+  "private": false,
   "main": "src/components/index.vue",
   "version": "1.0.0",
   "scripts": {
